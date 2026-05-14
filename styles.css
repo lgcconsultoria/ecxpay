@@ -826,6 +826,291 @@ ul { list-style: none; padding: 0; margin: 0; }
 .mastercard__foot { text-align: center; opacity: 0.75; max-width: 600px; margin: 0 auto; }
 
 /* ============================================================
+   SEÇÃO 5.5 — TAXA ZERO (MDR) PARA COMÉRCIO LOCAL
+   ============================================================ */
+.taxa-zero {
+  padding: 110px 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(245,166,35,0.08), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(35,35,232,0.05), transparent 40%),
+    linear-gradient(180deg, #fff 0%, var(--gray-light) 100%);
+  position: relative;
+}
+.taxa-zero .h2 { max-width: 880px; margin-left: auto; margin-right: auto; }
+.center-pill { display: block; margin: 0 auto 18px; width: max-content; }
+
+/* Caixa técnica MDR */
+.mdr-note {
+  max-width: 820px;
+  margin: 30px auto 50px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px dashed rgba(6,5,138,0.25);
+  border-left: 4px solid var(--ecx-blue-bright);
+  border-radius: var(--radius-md);
+  padding: 18px 22px;
+  font-size: 0.92rem;
+  color: var(--gray-text);
+}
+.mdr-note__tag {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--ecx-blue-deep);
+  background: rgba(35,35,232,0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.mdr-note p { margin: 0; line-height: 1.55; }
+.mdr-note strong { color: var(--ecx-blue-deep); }
+
+/* Comparação lado a lado */
+.taxa-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 70px;
+}
+.taxa-side {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  border: 2px solid var(--gray-soft);
+  position: relative;
+  overflow: hidden;
+}
+.taxa-side--bad {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: linear-gradient(180deg, #fff 0%, rgba(239, 68, 68, 0.025) 100%);
+}
+.taxa-side--good {
+  border-color: var(--ecx-gold);
+  background: linear-gradient(180deg, #fff 0%, rgba(245, 166, 35, 0.05) 100%);
+  box-shadow: 0 24px 50px rgba(245, 166, 35, 0.15);
+}
+.taxa-side--good::before {
+  content: "ESCOLHA INTELIGENTE";
+  position: absolute;
+  top: 18px; right: -34px;
+  background: var(--ecx-gold);
+  color: #1a1430;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 5px 40px;
+  transform: rotate(35deg);
+  box-shadow: 0 4px 12px rgba(245,166,35,0.4);
+}
+
+.taxa-side__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--gray-soft);
+}
+.taxa-side__label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.taxa-side--bad .taxa-side__label { color: var(--red-x); }
+.taxa-side--good .taxa-side__label { color: var(--ecx-gold); }
+.taxa-side__head h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.taxa-side--bad .taxa-side__head h3 { color: var(--red-x); }
+.taxa-side--good .taxa-side__head h3 { color: var(--ecx-blue-deep); }
+
+.taxa-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.taxa-flow__step {
+  text-align: center;
+  padding: 18px 12px;
+  border-radius: var(--radius-md);
+  background: var(--gray-light);
+  position: relative;
+}
+.taxa-flow__step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--ecx-blue-deep);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.taxa-flow__step small {
+  color: var(--gray-text);
+  font-size: 0.82rem;
+}
+.taxa-flow__step--minus { background: rgba(239,68,68,0.08); }
+.taxa-flow__step--minus strong { color: var(--red-x); }
+.taxa-flow__step--plus  { background: rgba(34,197,94,0.1); }
+.taxa-flow__step--plus  strong { color: var(--green-check); }
+.taxa-flow__delta {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  background: rgba(239,68,68,0.12);
+  color: var(--red-x);
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+.taxa-flow__delta--plus {
+  background: rgba(34,197,94,0.15);
+  color: var(--green-check);
+}
+.taxa-arrow {
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.taxa-arrow--bad  { color: var(--red-x); }
+.taxa-arrow--good { color: var(--ecx-gold); }
+
+.taxa-impact {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--gray-light);
+}
+.taxa-impact--bad  { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); }
+.taxa-impact--good { background: rgba(245,166,35,0.08); border: 1px solid rgba(245,166,35,0.25); }
+.taxa-impact__icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; }
+.taxa-impact strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ecx-blue-deep);
+  margin-bottom: 4px;
+}
+.taxa-impact p { margin: 0; font-size: 0.92rem; color: var(--gray-text); }
+
+/* Cadeia de impacto */
+.chain-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--ecx-blue-deep);
+  margin: 0 0 30px;
+}
+.taxa-chain {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: stretch;
+  gap: 10px;
+  padding: 0;
+  margin: 0 0 60px;
+}
+.taxa-chain .chain-step {
+  background: #fff;
+  border: 1px solid var(--gray-soft);
+  border-radius: var(--radius-md);
+  padding: 22px 16px;
+  text-align: center;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+}
+.chain-step__num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--ecx-blue-deep);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.chain-step strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--ecx-blue-deep);
+  margin-bottom: 4px;
+  line-height: 1.25;
+}
+.chain-step p {
+  font-size: 0.82rem;
+  color: var(--gray-text);
+  margin: 0;
+}
+.chain-step--highlight {
+  border-color: var(--ecx-gold);
+  background: linear-gradient(135deg, rgba(245,166,35,0.1), rgba(245,166,35,0.02));
+  box-shadow: 0 10px 30px rgba(245,166,35,0.18);
+}
+.chain-step--highlight .chain-step__num {
+  background: var(--ecx-gold);
+  color: #1a1430;
+}
+.taxa-chain .chain-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--ecx-blue-bright);
+  font-size: 1.4rem;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+/* Bullets finais */
+.taxa-bullets {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+.taxa-bullets li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--gray-soft);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: all .25s ease;
+}
+.taxa-bullets li:hover {
+  border-color: var(--ecx-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+.taxa-bullets li .check { flex-shrink: 0; }
+.taxa-bullets li strong { display: block; color: var(--ecx-blue-deep); margin-bottom: 2px; }
+.taxa-bullets li div { font-size: 0.94rem; color: var(--gray-text); }
+
+/* ============================================================
    SEÇÃO 6 — AnteciPay
    ============================================================ */
 .anteci { padding: 110px 0; background: #fff; }
@@ -1045,6 +1330,21 @@ ul { list-style: none; padding: 0; margin: 0; }
 .check { background: rgba(34,197,94,0.15); color: var(--green-check); }
 .cross { background: rgba(239,68,68,0.12);  color: var(--red-x); }
 
+/* Linha de destaque (★) na tabela comparativa */
+.compare-row--star { background: rgba(245,166,35,0.06); }
+.compare-row--star .compare-cell--ecx { background: rgba(245,166,35,0.18); }
+.compare-row--star .compare-cell--feat { color: var(--ecx-blue-deep); font-weight: 700; }
+.compare-tag {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--ecx-gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* ============================================================
    SEÇÃO 10 — Pertencimento
    ============================================================ */
@@ -1233,6 +1533,17 @@ ul { list-style: none; padding: 0; margin: 0; }
   .cred__grid { grid-template-columns: repeat(2, 1fr); }
   .pay-badges { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: 1fr; }
+
+  /* Taxa Zero responsivo */
+  .taxa-compare { grid-template-columns: 1fr; }
+  .taxa-side--good::before { top: 14px; right: -38px; font-size: 0.65rem; }
+  .taxa-chain {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .taxa-chain .chain-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .taxa-bullets { grid-template-columns: 1fr; }
+  .mdr-note { flex-direction: column; gap: 12px; }
 }
 
 @media (max-width: 768px) {
@@ -1248,6 +1559,7 @@ ul { list-style: none; padding: 0; margin: 0; }
   /* Tabela comparativa em cards verticais */
   .compare-table { background: transparent; border: none; }
   .compare-row { display: block; background: var(--gray-light); border-radius: var(--radius-md); padding: 12px; margin-bottom: 12px; border: 1px solid var(--gray-soft); }
+  .compare-row--star { background: rgba(245,166,35,0.08); border-color: var(--ecx-gold); }
   .compare-row--head { display: none; }
   .compare-cell { display: flex; justify-content: space-between; align-items: center; padding: 10px 8px; border-bottom: 1px solid var(--gray-soft); text-align: left; }
   .compare-cell:last-child { border-bottom: none; }

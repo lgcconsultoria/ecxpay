@@ -10,7 +10,7 @@
   const prefeituraRaw = params.get('prefeitura');
   const estadoRaw = params.get('estado');
 
-  const prefeitura = prefeituraRaw ? decodeURIComponent(prefeituraRaw).trim() : 'sua prefeitura';
+  const prefeitura = prefeituraRaw ? decodeURIComponent(prefeituraRaw).trim() : 'Câmara Municipal de Itapevi';
   const estado = estadoRaw ? decodeURIComponent(estadoRaw).trim().toUpperCase() : '';
 
   const prefeituraDisplay = prefeitura
@@ -20,7 +20,7 @@
     el.textContent = prefeituraDisplay;
   });
 
-  // Atualiza title se prefeitura customizada
+  // Atualiza title se órgão customizado via URL
   if (prefeituraRaw) {
     document.title = `ECX Pay — Cartão de benefícios para servidores de ${prefeitura}`;
   }

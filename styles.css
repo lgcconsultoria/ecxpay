@@ -629,7 +629,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   width: 140px; height: 140px;
   margin: 12px auto;
 }
-.ring-stage--lg { width: 180px; height: 180px; }
 .ring { width: 100%; height: 100%; transform: rotate(-90deg); }
 .ring__bg { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 8; }
 .ring__fg {
@@ -642,7 +641,6 @@ ul { list-style: none; padding: 0; margin: 0; }
   transition: stroke-dashoffset 1.6s cubic-bezier(.34,1.56,.64,1);
 }
 .ring__fg.is-anim { stroke-dashoffset: 100; }
-.ring--big { stroke-width: 6; }
 .ring-center {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -1358,58 +1356,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 .lei-team__txt p { margin: 0; color: rgba(255,255,255,0.82); font-size: 0.95rem; }
 
 /* ============================================================
-   SEÇÃO 6 — AnteciPay
-   ============================================================ */
-.anteci { padding: 110px 0; background: #fff; }
-.anteci__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-.check-list { display: grid; gap: 10px; margin-top: 24px; }
-.check-list li { font-weight: 500; }
-
-.anteci__visual { position: relative; }
-.timeline {
-  display: grid;
-  gap: 18px;
-  margin: 0 0 32px;
-  padding-left: 0;
-}
-.timeline li {
-  display: flex; align-items: center; gap: 16px;
-  background: var(--gray-light);
-  border-radius: var(--radius-md);
-  padding: 18px;
-  position: relative;
-  border-left: 4px solid var(--ecx-gold);
-}
-.timeline__dot {
-  flex-shrink: 0;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--ecx-blue-deep), var(--ecx-blue-bright));
-  color: #fff;
-  font-size: 1.3rem;
-  display: grid; place-items: center;
-}
-.timeline strong { display: block; font-family: var(--font-display); font-size: 1rem; }
-.timeline small { display: block; color: var(--gray-text); margin-top: 2px; }
-
-.ring-card {
-  text-align: center;
-  background: linear-gradient(180deg, rgba(245,166,35,0.08), rgba(245,166,35,0));
-  border: 1px solid rgba(245,166,35,0.25);
-  border-radius: var(--radius-md);
-  padding: 24px;
-}
-.ring-card .ring-stage--lg .ring__fg { stroke: var(--ecx-gold); }
-.ring-card .ring-center small { color: var(--gray-text); }
-.ring-card .ring-center strong { color: var(--ecx-blue-deep); font-size: 1.7rem; }
-.ring-card p { font-size: var(--text-small); color: var(--gray-text); margin: 0; }
-
-/* ============================================================
    SEÇÃO 7 — Vale-Energia
    ============================================================ */
 .energia { padding: 90px 0; background: var(--gray-light); }
@@ -1773,7 +1719,6 @@ ul { list-style: none; padding: 0; margin: 0; }
 
   .app-demo__grid { grid-template-columns: 1fr; gap: 50px; }
   .app-demo__phone { order: -1; }
-  .anteci__grid { grid-template-columns: 1fr; gap: 50px; }
 
   .grid-benefits { grid-template-columns: repeat(2, 1fr); }
   .belong-cards { grid-template-columns: 1fr; }
